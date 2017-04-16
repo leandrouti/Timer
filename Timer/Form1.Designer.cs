@@ -41,7 +41,10 @@
 			this.TbMinutes = new System.Windows.Forms.TextBox();
 			this.TbHour = new System.Windows.Forms.TextBox();
 			this.Btn_Keyboard = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BtnStart
@@ -130,7 +133,7 @@
 			this.TbSec.Name = "TbSec";
 			this.TbSec.Size = new System.Drawing.Size(50, 26);
 			this.TbSec.TabIndex = 2;
-			this.TbSec.Text = "0";
+			this.TbSec.Text = "00";
 			// 
 			// TbMinutes
 			// 
@@ -139,7 +142,7 @@
 			this.TbMinutes.Name = "TbMinutes";
 			this.TbMinutes.Size = new System.Drawing.Size(50, 26);
 			this.TbMinutes.TabIndex = 1;
-			this.TbMinutes.Text = "0";
+			this.TbMinutes.Text = "00";
 			// 
 			// TbHour
 			// 
@@ -148,11 +151,11 @@
 			this.TbHour.Name = "TbHour";
 			this.TbHour.Size = new System.Drawing.Size(50, 26);
 			this.TbHour.TabIndex = 0;
-			this.TbHour.Text = "0";
+			this.TbHour.Text = "00";
 			// 
 			// Btn_Keyboard
 			// 
-			this.Btn_Keyboard.Location = new System.Drawing.Point(92, 212);
+			this.Btn_Keyboard.Location = new System.Drawing.Point(88, 206);
 			this.Btn_Keyboard.Name = "Btn_Keyboard";
 			this.Btn_Keyboard.Size = new System.Drawing.Size(75, 23);
 			this.Btn_Keyboard.TabIndex = 10;
@@ -160,11 +163,35 @@
 			this.Btn_Keyboard.UseVisualStyleBackColor = true;
 			this.Btn_Keyboard.Click += new System.EventHandler(this.Btn_Keyboard_Click);
 			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.listBox1);
+			this.groupBox2.Location = new System.Drawing.Point(263, 12);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(200, 182);
+			this.groupBox2.TabIndex = 12;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "History";
+			// 
+			// listBox1
+			// 
+			this.listBox1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.listBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listBox1.FormattingEnabled = true;
+			this.listBox1.ItemHeight = 19;
+			this.listBox1.Location = new System.Drawing.Point(3, 15);
+			this.listBox1.Name = "listBox1";
+			this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.listBox1.Size = new System.Drawing.Size(194, 156);
+			this.listBox1.TabIndex = 12;
+			this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(261, 241);
+			this.ClientSize = new System.Drawing.Size(471, 241);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.Btn_Keyboard);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.LblTime);
@@ -177,6 +204,7 @@
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -196,6 +224,8 @@
 		private System.Windows.Forms.TextBox TbMinutes;
 		private System.Windows.Forms.TextBox TbHour;
 		private System.Windows.Forms.Button Btn_Keyboard;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.ListBox listBox1;
 	}
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,17 @@ namespace Timer
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			TbMinutes.Focus();
+
+
+
+			List<String> lstItms = new List<String>();
+			lstItms = FileSave.loadTimetoList();
+
+			foreach(string itm in lstItms)
+			{
+				listBox1.Items.Add(itm);
+			}
+
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
@@ -71,6 +83,23 @@ namespace Timer
 				TbSec.Enabled = true;
 			}
 
+
+
+			StringBuilder stbWriteTime = new StringBuilder();
+			stbWriteTime.Append(TbHour.Text.PadLeft(2, '0')).Append(':');
+			stbWriteTime.Append(TbMinutes.Text.PadLeft(2, '0')).Append(':');
+			stbWriteTime.Append(TbSec.Text.PadLeft(2, '0'));
+
+			if (!listBox1.Items.Contains(stbWriteTime.ToString()))
+			{
+				listBox1.Items.Add(stbWriteTime.ToString());
+				listBox1.SelectedIndex = listBox1.Items.Count - 1;
+				FileSave.saveTimetoFile(stbWriteTime);
+			}
+			else
+			{
+				listBox1.SelectedItem = stbWriteTime.ToString();
+			}
 		}
 
 		private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -87,7 +116,17 @@ namespace Timer
 
 		private void Btn_Keyboard_Click(object sender, EventArgs e)
 		{
-			this.Height = 450;
+
+		}
+
+		private void listBox1_DoubleClick(object sender, EventArgs e)
+		{
+			String stSelectedTime = listBox1.Items[listBox1.SelectedIndex].ToString();
+			ArrayList arTimeInfo = new ArrayList(stSelectedTime.Split(':'));
+
+			TbHour.Text = arTimeInfo[0].ToString();
+			TbMinutes.Text = arTimeInfo[1].ToString();
+			TbSec.Text = arTimeInfo[2].ToString();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -98,9 +137,9 @@ namespace Timer
 
 		private void resetForm()
 		{
-			TbHour.Text = "0";
-			TbMinutes.Text = "0";
-			TbSec.Text = "0";
+			TbHour.Text = "00";
+			TbMinutes.Text = "00";
+			TbSec.Text = "00";
 			totTime = 0;
 			LblTime.Text = "00:00:00";
 			BtnStart.Text = "Start";
